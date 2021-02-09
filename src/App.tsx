@@ -6,6 +6,7 @@ import Button from "./components/button";
 import { StyledInput } from "./components/fields/input/input.styles";
 import Heading from "./components/heading";
 import { StyledFancyText } from "./FancyText";
+import MySpan from "./MySpan";
 import Text from "./Text";
 
 type FooterProps = {
@@ -59,6 +60,15 @@ function App() {
           tenetur! Dolorem nesciunt ab recusandae illo fugiat quod perspiciatis
           aliquid vel ut. Ea dolore inventore at deleniti illum itaque debitis?
         </StyledFancyText>
+      </Aside>
+
+      <Aside>
+        <MySpan>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet illum
+          odit facere accusamus blanditiis quam necessitatibus rem quisquam ad
+          neque ullam assumenda fugit nam et, repellendus fugiat cumque tenetur
+          velit?
+        </MySpan>
       </Aside>
 
       <Footer color="red">

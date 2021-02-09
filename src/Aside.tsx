@@ -8,6 +8,10 @@ export const StyledAside = styled.aside`
   ${StyledFancyText} {
     color: white;
   }
+
+  span {
+    color: green;
+  }
 `;
 
 const Aside = (props) => {
