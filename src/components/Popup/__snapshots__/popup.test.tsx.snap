@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Popup Component should render correctly 1`] = `
+<div
+  class="sc-bdfBwQ lmGcYP"
+  role="presentation"
+>
+  <div
+    class="sc-gsTCUz bFFEVi"
+  >
+    <div
+      class="sc-hKgILt"
+    >
+      <div
+        class="sc-eCssSg"
+      >
+        Test header text
+      </div>
+      <button
+        aria-label="Close popup"
+        class="sc-jSgupP fcjYce"
+        tabindex="0"
+        type="button"
+      >
+        X
+      </button>
+    </div>
+    <div
+      class="sc-dlfnbm"
+    >
+      Test
+    </div>
+  </div>
+</div>
+`;
