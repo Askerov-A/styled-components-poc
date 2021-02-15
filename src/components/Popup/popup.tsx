@@ -2,13 +2,13 @@ import React, { useRef, useEffect } from "react";
 import ReactDOM from "react-dom";
 
 import {
-  PopupWrapper,
-  PopupContentWrapper,
-  PopupHeader,
-  PopupTitle,
-  PopupButton,
-  PopupContent,
-} from "./popup.styles";
+  SPopupWrapper,
+  SPopupContentWrapper,
+  SPopupHeader,
+  SPopupTitle,
+  SPopupButton,
+  SPopupContent,
+} from "./popup.styled";
 
 interface IPopupProps {
   isShowed: boolean;
@@ -43,40 +43,47 @@ const useOutsideClickHandlerHook = (
 };
 
 const Popup = ({
+  isShowed,
   onClose,
   headerText,
   children,
   width,
 }: React.PropsWithChildren<IPopupProps>): JSX.Element | null => {
   const wrapperRef = useRef<HTMLDivElement>(null);
-  useOutsideClickHandlerHook(wrapperRef, onClose);
   const domNode: HTMLElement = document.createElement("div");
   domNode.setAttribute("id", "Popup-root");
-  document.body.appendChild(domNode);
 
+  const onCloseHandler = () => {
+    domNode && document.body.removeChild(domNode);
+    onClose();
+  };
+  useOutsideClickHandlerHook(wrapperRef, onCloseHandler);
+  useEffect(() => {
+    domNode && isShowed && document.body.appendChild(domNode);
+  }, [domNode, isShowed]);
   return (
     <>
       {ReactDOM.createPortal(
-        <PopupWrapper role="presentation">
-          <PopupContentWrapper ref={wrapperRef} width={width}>
+        <SPopupWrapper role="presentation">
+          <SPopupContentWrapper ref={wrapperRef} width={width}>
             {headerText && (
-              <PopupHeader>
-                <PopupTitle>{headerText}</PopupTitle>
-                <PopupButton
+              <SPopupHeader>
+                <SPopupTitle>{headerText}</SPopupTitle>
+                <SPopupButton
                   aria-label="Close popup"
                   type="button"
                   tabIndex={0}
-                  onClick={onClose}
-                  onKeyDown={onClose}
-                  onKeyPress={onClose}
+                  onClick={onCloseHandler}
+                  onKeyDown={onCloseHandler}
+                  onKeyPress={onCloseHandler}
                 >
                   X
-                </PopupButton>
-              </PopupHeader>
+                </SPopupButton>
+              </SPopupHeader>
             )}
-            <PopupContent>{children}</PopupContent>
-          </PopupContentWrapper>
-        </PopupWrapper>,
+            <SPopupContent>{children}</SPopupContent>
+          </SPopupContentWrapper>
+        </SPopupWrapper>,
         domNode
       )}
     </>

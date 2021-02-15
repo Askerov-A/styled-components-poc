@@ -9,7 +9,7 @@ const fadeIn = keyframes`
   }
 `;
 
-export const PopupWrapper = styled.div`
+export const SPopupWrapper = styled.div`
   position: fixed;
   top: 0;
   left: 0;
@@ -29,30 +29,24 @@ interface PopupContentWrapperProps {
   readonly width?: number;
 }
 
-export const PopupContentWrapper = styled.div<PopupContentWrapperProps>`
+export const SPopupContentWrapper = styled.div<PopupContentWrapperProps>`
   position: relative;
   width: 80%;
   margin: 15% auto;
   padding: 20px;
   background-color: #fefefe;
   border-radius: 4px;
-  ${({ width }) => {
-    if (width) {
-      return css`
-        width: ${width}px;
-      `;
-    }
-
-    return css`
-      width: 100%;
-    `;
-  }}
+  width: 100%;
+  ${({ width }) =>
+    width &&
+    css`
+      width: ${width}px;
+    `};
 `;
-export const PopupContent = styled.div``;
-
-export const PopupHeader = styled.div``;
-export const PopupTitle = styled.div``;
-export const PopupButton = styled.button`
+export const SPopupContent = styled.div``;
+export const SPopupHeader = styled.div``;
+export const SPopupTitle = styled.div``;
+export const SPopupButton = styled.button`
   position: absolute;
   top: 16px;
   right: 16px;
